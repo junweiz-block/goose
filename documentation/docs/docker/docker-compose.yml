@@ -8,14 +8,15 @@ services:
     volumes:
       # Mount user's directory with read-write access
       - ../../..:/root/workspace
-      - goose-config:/root/.goose
+      - goose-config:/root/.config/goose
+      - goose-data:/root/.local
       # Mount git config
       - ~/.gitconfig:/root/.gitconfig:ro
       # Mount SSH keys
       - ~/.ssh:/root/.ssh:ro
     working_dir: /root/workspace
     environment:
-      - OOSE_HOME=/root/.goose
+      - GOOSE_HOME=/root/.goose
       # Set default editor
       - EDITOR=vim
       # Preserve git author info
@@ -30,7 +31,10 @@ services:
       - SSH_AUTH_SOCK
     stdin_open: true
     tty: true
+    env_file:
+      - .env
     entrypoint: ["/bin/bash"]
 
 volumes:
   goose-config:
+  goose-data:
