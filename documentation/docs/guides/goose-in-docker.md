@@ -19,7 +19,7 @@ To begin, you will need to modify the `Dockerfile` and `docker-compose.yml` file
 
 - **Optional:** Mounting your personal Goose settings and hints files in the `docker-compose.yml` file. This allows you to use your personal settings and hints files within the Docker container.
 
- 
+- **Optional** Set up other environment variables through `.env` file in the same folder as `docker-compose.yml` as needed, such as `UV_INDEX_URL` if you'd like to use some other Python pip registry.
 
 After setting the credentials, you can build the Docker image using the following command:
 
@@ -49,4 +49,4 @@ After that, you can start a session:
 goose session
 ```
 
-You should now be able to connect to Goose with your configured extensions enabled.
+You should now be able to connect to Goose with your configured extensions enabled. Also Goose configurations and sessions will be properly stored in Docker volumes and reused.
